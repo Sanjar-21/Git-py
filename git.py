@@ -62,6 +62,26 @@ def main_add():
         json.dump(file_data, f)
 
 
+def main_commit():
+    if len(sys.argv) != 2:
+        print("Git: argmentlar soni kam buldid")
+        return
+    commit = sys.argv[1]
+
+    if not os.path.exists(".mygit"):
+        print("Repository not initialized")
+        return
+    if commit != "commit":
+        print("Invalid command")
+        return
+    with open(".mygit/index.json", "r") as file:
+        data = json.load(file)
+        if not data:
+            print("Nothing to commit")
+        return
+
+
 if __name__ == "__main__":
     # main_init()
-    main_add()
+    # main_add()
+    pass
